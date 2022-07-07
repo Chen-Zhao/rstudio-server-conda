@@ -34,13 +34,17 @@ echo $CONDA_PREFIX > $CONDA_ENV_PATH
 
 export RETICULATE_PYTHON=$CONDA_PREFIX/bin/python
 
-/usr/lib/rstudio-server/bin/rserver --server-daemonize=0 \
+./usr/lib/rstudio-server/bin/rserver --server-daemonize=0 \
   --www-port=$1 \
   --secure-cookie-key-file=$COOKIE_KEY_PATH \
-  --rsession-which-r=$(which R) \
   --rsession-ld-library-path=$CONDA_PREFIX/lib \
+  --config-file=$PWD/rserver.conf \
   --rsession-path="$CWD/rsession.sh" \
   --server-user $USER \
+  --auth-none=0 \
+  --auth-pam-helper-path=$PWD/rstudio_auth.sh \
+  --database-config-file=$PWD/database.conf \
   $REVOCATION_LIST_PAR
+
 
 
