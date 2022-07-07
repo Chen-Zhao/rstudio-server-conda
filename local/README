@@ -1,0 +1,15 @@
+wget https://raw.githubusercontent.com/nickjer/singularity-rstudio/master/rstudio_auth.sh
+chmod 755 rstudio_auth.sh
+
+# Confirm username is supplied
+if [[ $# -lt 1 ]]; then
+  echo "Usage: auth USERNAME"
+  exit 1
+fi
+
+/usr/lib/rstudio-server/bin/rserver --server-daemonize=0 \
+  --auth-none 0 \
+  --auth-pam-helper-path /path/to/rstudio_auth.sh \
+
+RSTUDIO_PASSWORD="$(cat ~/.rstudio_mypsw)" ./start_rstudio_server.sh 8787
+
