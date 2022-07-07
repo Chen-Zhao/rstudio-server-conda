@@ -11,5 +11,5 @@ fi
   --auth-none 0 \
   --auth-pam-helper-path /path/to/rstudio_auth.sh \
 
-LD_LIBRARY_PATH=${$CONDA_PREFIX}/lib/RSTUDIO_PASSWORD="$(cat ~/.rstudio_mypsw)" ./start_rstudio_server.sh 8787
+LD_LIBRARY_PATH=${$CONDA_PREFIX}/lib/ RSTUDIO_PASSWORD="$(cat ~/.rstudio_mypsw)" ./start_rstudio_server.sh 8787
 
