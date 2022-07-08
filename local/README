@@ -9,7 +9,7 @@ fi
 
 /usr/lib/rstudio-server/bin/rserver --server-daemonize=0 \
   --auth-none 0 \
-  --auth-pam-helper-path /path/to/rstudio_auth.sh \
+  --auth-pam-helper-path rstudio_auth.sh \
 
 LD_LIBRARY_PATH=${CONDA_PREFIX}/lib/ RSTUDIO_PASSWORD="yourpassword" ./start_rstudio_server.sh 8787
 
