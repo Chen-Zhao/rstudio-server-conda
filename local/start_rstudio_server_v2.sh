@@ -11,9 +11,11 @@ USER=$(whoami)
 COOKIE_KEY_PATH=/tmp/rstudio-server/${USER}_secure-cookie-key
 rm -f $COOKIE_KEY_PATH
 mkdir -p $(dirname $COOKIE_KEY_PATH)
+mkdir -p ${RSTUDIO_RUN_ROOT}/rstudio-server
+mkdir -p ${RSTUDIO_RUN_ROOT}/database
 
 # Rserver >= version 1.3 requires the --auth-revocation-list-dir parameter
-if [ $(sed -n '/^1.3./p;q' ${RSTUDIO_SERVER_ROOT}/VERSION) ] ;
+if [ $(sed -n '/^1.3./p;q' $RSTUDIO_SERVER_ROOT/VERSION) ] ;
 then
   REVOCATION_LIST_DIR=/tmp/rstudio-server/${USER}_revocation-list-dir
   mkdir -p $REVOCATION_LIST_DIR
