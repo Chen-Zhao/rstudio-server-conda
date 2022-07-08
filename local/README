@@ -1,3 +1,12 @@
+LD_LIBRARY_PATH=${CONDA_PREFIX}/lib/ \
+RSTUDIO_PASSWORD="yourpassword" \
+RSTUDIO_SERVER_ROOT="/usr/lib/rstudio-server" \
+RSTUDIO_RUN_ROOT="./run/" \
+RSTUDIO_CONFIG_ROOT="./" ./start_rstudio_server_v2.sh 8787
+
+
+
+--------- rstudio pwd protected mod from rstudio_auth.sh ---------
 wget https://raw.githubusercontent.com/nickjer/singularity-rstudio/master/rstudio_auth.sh
 chmod 755 rstudio_auth.sh
 
@@ -10,10 +19,4 @@ fi
 /usr/lib/rstudio-server/bin/rserver --server-daemonize=0 \
   --auth-none 0 \
   --auth-pam-helper-path rstudio_auth.sh \
-
-LD_LIBRARY_PATH=${CONDA_PREFIX}/lib/ \
-RSTUDIO_PASSWORD="yourpassword" \
-RSTUDIO_SERVER_ROOT="/usr/lib/rstudio-server" \
-RSTUDIO_RUN_ROOT="./run/" \
-RSTUDIO_CONFIG_ROOT="./" ./start_rstudio_server_v2.sh 8787
 
