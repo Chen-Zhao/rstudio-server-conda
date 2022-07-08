@@ -1,5 +1,6 @@
 # Running Rstudio Server in a Conda Environment
 
+Work with CONDA with PWD protected.
 See local/README
 
 ----------------- ORINGINAL DESCIPTION -----------------
