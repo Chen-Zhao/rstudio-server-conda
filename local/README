@@ -14,5 +14,6 @@ fi
 LD_LIBRARY_PATH=${CONDA_PREFIX}/lib/ \
 RSTUDIO_PASSWORD="yourpassword" \
 RSTUDIO_SERVER_ROOT="/usr/lib/rstudio-server" \
-RSTUDIO_RUN_ROOT="./" ./start_rstudio_server.sh 8787
+RSTUDIO_RUN_ROOT="./run/" \
+RSTUDIO_CONFIG_ROOT="./" ./start_rstudio_server.sh 8787
 
