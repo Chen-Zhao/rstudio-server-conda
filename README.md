@@ -1,5 +1,9 @@
 # Running Rstudio Server in a Conda Environment
 
+See local/README
+
+----------------- ORINGINAL DESCIPTION -----------------
+
 I usually rely on the [conda package manager](https://docs.conda.io/en/latest/) to manage my environments during development. Thanks to [conda-forge](https://conda-forge.org/) and [bioconda](https://bioconda.github.io/) most R packages are now also available through conda. For production,
 I [convert them to containers](https://github.com/grst/containerize-conda) as these are easier to share. 
 
