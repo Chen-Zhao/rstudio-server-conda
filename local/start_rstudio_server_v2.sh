@@ -14,6 +14,20 @@ mkdir -p $(dirname $COOKIE_KEY_PATH)
 mkdir -p ${RSTUDIO_RUN_ROOT}/rstudio-server
 mkdir -p ${RSTUDIO_RUN_ROOT}/database
 
+
+cat << EOF  > ${RSTUDIO_CONFIG_ROOT}/rserver.conf
+server-pid-file=${RSTUDIO_RUN_ROOT}/rstudio-server.pid
+server-data-dir=${RSTUDIO_RUN_ROOT}/rstudio-server/
+rsession-path=${RSTUDIO_CONFIG_ROOT}/rsession.sh
+EOF
+
+cat << EOF > ${RSTUDIO_CONFIG_ROOT}/database.conf
+provider=sqlite
+directory=${RSTUDIO_RUN_ROOT}/database
+EOF
+
+RSERVER_BIN=${RSTUDIO_SERVER_ROOT}/bin/rserver
+
 # Rserver >= version 1.3 requires the --auth-revocation-list-dir parameter
 if [ $(sed -n '/^1.3./p;q' $RSTUDIO_SERVER_ROOT/VERSION) ] ;
 then
@@ -36,15 +50,15 @@ echo $CONDA_PREFIX > $CONDA_ENV_PATH
 
 export RETICULATE_PYTHON=$CONDA_PREFIX/bin/python
 
-${RSTUDIO_SERVER_ROOT}/bin/rserver --server-daemonize=0 \
+$RSERVER_BIN --server-daemonize=0 \
   --www-port=$1 \
   --config-file=${RSTUDIO_CONFIG_ROOT}/rserver.conf \
   --secure-cookie-key-file=$COOKIE_KEY_PATH \
   --rsession-which-r=$(which R) \
   --rsession-ld-library-path=$CONDA_PREFIX/lib \
-  --rsession-path="$CWD/rsession.sh" \
-  --auth-none 0 \
+  --rsession-path=${RSTUDIO_CONFIG_ROOT}/rsession.sh \
   --server-user $USER \
-  --auth-pam-helper-path=$RSTUDIO_CONFIG_ROOT/rstudio_auth.sh \
-  --database-config-file="$CWD/database.conf" \
+  --auth-none 0 \
+  --auth-pam-helper-path=${RSTUDIO_CONFIG_ROOT}/rstudio_auth.sh \
+  --database-config-file=${RSTUDIO_CONFIG_ROOT}/database.conf \
   $REVOCATION_LIST_PAR
