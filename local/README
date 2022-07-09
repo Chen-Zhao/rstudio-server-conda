@@ -1,8 +1,8 @@
 RSTUDIO_PASSWORD=password \
 LD_LIBRARY_PATH=${CONDA_PREFIX}/lib/ \
-RSTUDIO_SERVER_ROOT="/home/ing/chen.zhao/conda/rstudio-server-conda/local/usr/lib/rstudio-server" \
-RSTUDIO_RUN_ROOT="/home/ing/chen.zhao/conda/rstudio-server-conda/local/run/" \
-RSTUDIO_CONFIG_ROOT="/home/ing/chen.zhao/conda/rstudio-server-conda/local/" ./start_rstudio_server_v2.sh 8787
+RSTUDIO_SERVER_ROOT="PATH_TO_rserver/lib/rstudio-server" \
+RSTUDIO_RUN_ROOT="PATH_TO_RUN_DIR/local/run/" \
+RSTUDIO_CONFIG_ROOT="PATH_TO_CONFIG_DIR/local/" ./start_rstudio_server_v2.sh 8787
 
 
 
