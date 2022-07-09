@@ -38,10 +38,12 @@ export RETICULATE_PYTHON=$CONDA_PREFIX/bin/python
 
 ${RSTUDIO_SERVER_ROOT}/bin/rserver --server-daemonize=0 \
   --www-port=$1 \
+  --config-file=${RSTUDIO_CONFIG_ROOT}/rserver.conf \
   --secure-cookie-key-file=$COOKIE_KEY_PATH \
   --rsession-which-r=$(which R) \
   --rsession-ld-library-path=$CONDA_PREFIX/lib \
   --rsession-path="$CWD/rsession.sh" \
   --server-user $USER \
+  --auth-pam-helper-path rstudio_auth.sh \
   --database-config-file="$CWD/database.conf" \
   $REVOCATION_LIST_PAR
