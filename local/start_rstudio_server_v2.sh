@@ -45,6 +45,6 @@ ${RSTUDIO_SERVER_ROOT}/bin/rserver --server-daemonize=0 \
   --rsession-path="$CWD/rsession.sh" \
   --auth-none 0 \
   --server-user $USER \
-  --auth-pam-helper-path rstudio_auth.sh \
+  --auth-pam-helper-path=./rstudio_auth.sh \
   --database-config-file="$CWD/database.conf" \
   $REVOCATION_LIST_PAR
