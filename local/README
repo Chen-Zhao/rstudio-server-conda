@@ -1,8 +1,9 @@
+RSTUDIO_PASSWORD=password \
 LD_LIBRARY_PATH=${CONDA_PREFIX}/lib/ \
-RSTUDIO_PASSWORD="yourpassword" \
-RSTUDIO_SERVER_ROOT="/usr/lib/rstudio-server" \
-RSTUDIO_RUN_ROOT="./run/" \
-RSTUDIO_CONFIG_ROOT="./" ./start_rstudio_server_v2.sh 8787
+RSTUDIO_SERVER_ROOT="/home/ing/chen.zhao/conda/rstudio-server-conda/local/usr/lib/rstudio-server" \
+RSTUDIO_RUN_ROOT="/home/ing/chen.zhao/conda/rstudio-server-conda/local/run/" \
+RSTUDIO_CONFIG_ROOT="/home/ing/chen.zhao/conda/rstudio-server-conda/local/" ./start_rstudio_server_v2.sh 8787
+
 
 
 
@@ -20,6 +21,8 @@ fi
   --auth-none 0 \
   --auth-pam-helper-path rstudio_auth.sh \
 
-ssh -R 10.35.37.22:8787:127.0.0.1:8787 xxx@10.35.37.22
+## ssh tunnel
+
+ssh -R rserver_IP:8787:127.0.0.1:8787 xxx@login_IP
 ssh -L 0.0.0.0:8788:127.0.0.1:8787 localhost
 
