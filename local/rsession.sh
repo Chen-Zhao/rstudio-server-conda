@@ -19,4 +19,4 @@ conda activate ${CONDA_ENV}
 
 export RETICULATE_PYTHON=$CONDA_PREFIX/bin/python
 
-/usr/lib/rstudio-server/bin/rsession $@
+${RSTUDIO_SERVER_ROOT}/bin/rsession $@
