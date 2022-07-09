@@ -20,3 +20,6 @@ fi
   --auth-none 0 \
   --auth-pam-helper-path rstudio_auth.sh \
 
+ssh -R 10.35.37.22:8787:127.0.0.1:8787 xxx@10.35.37.22
+ssh -L 0.0.0.0:8788:127.0.0.1:8787 localhost
+
