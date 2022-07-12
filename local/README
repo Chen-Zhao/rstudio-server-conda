@@ -1,3 +1,6 @@
+
+sed -i -e '17i RSTUDIO_SERVER_ROOT='$RSTUDIO_SERVER_ROOT rsession.sh
+sed -i -e '17i CONDA_ENV='$CONDA_PREFIX rsession.sh
 RSTUDIO_PASSWORD=password \
 LD_LIBRARY_PATH=${CONDA_PREFIX}/lib/ \
 RSTUDIO_SERVER_ROOT="PATH_TO_rserver/lib/rstudio-server" \
