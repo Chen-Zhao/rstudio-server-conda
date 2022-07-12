@@ -1,6 +1,10 @@
-
+sed -i -e '/conda activate/d' rsession.sh
+sed -i -e '17i source '$CONDA_PREFIX'/bin/activate '$CONDA_ENV rsession.sh
+sed -i -e '17i #activate conda' rsession.sh
 sed -i -e '17i RSTUDIO_SERVER_ROOT='$RSTUDIO_SERVER_ROOT rsession.sh
-sed -i -e '17i CONDA_ENV='$CONDA_PREFIX rsession.sh
+sed -i -e '17i CONDA_PREFIX='$CONDA_PREFIX rsession.sh
+sed -i -e '17i CONDA_ENV=base' rsession.sh
+
 RSTUDIO_PASSWORD=password \
 LD_LIBRARY_PATH=${CONDA_PREFIX}/lib/ \
 RSTUDIO_SERVER_ROOT="PATH_TO_rserver/lib/rstudio-server" \
