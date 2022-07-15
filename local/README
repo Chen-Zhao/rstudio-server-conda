@@ -61,6 +61,7 @@ git config remote.origin.url git@github.com:your_username/your_project.git
 4) add r project a branch
 
 # change default branch
+# github settings autoxxx
 
 ## use git@github.com in .git/config
 url = git@github.com:UNAME/RepNAME.git
