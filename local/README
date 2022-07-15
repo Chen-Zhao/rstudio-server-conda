@@ -32,4 +32,45 @@ fi
 
 ssh -R rserver_IP:8787:127.0.0.1:8787 xxx@login_IP
 ssh -L 0.0.0.0:8788:127.0.0.1:8787 localhost
+# or
+ssh -L 0.0.0.0:8788:rserver_IP:8787 rserver_IP
+
+###github 
+
+1) Set username and email (if you did not do that before)
+git config --global user.name "your_username"
+git config --global user.email "your_email@example.com"
+
+2) Create SSH key
+ssh-keygen -t rsa -C "your_email@example.com" 
+
+In RStudio, go to menu Tools / Global options / Git SVN / View public key and copy the key to your Github account setting (Edit profile / SSH keys / Add SSH key).
+
+To check that ssh-authentication works, try to run
+ssh -T git@github.com
+
+and you should get something like
+
+Hi your_username! You’ve successfully authenticated, but GitHub does not provide shell access. 
+
+3) Change remote.origin.url from HTTPS to HTTP 
+
+It might be Windows specific, but after 1)+2) RStudio still asks me for user name and password. After a long Google search, I have found a solution here and that is
+git config remote.origin.url git@github.com:your_username/your_project.git
+
+4) add r project a branch
+
+# change default branch
+
+## use git@github.com in .git/config
+url = git@github.com:UNAME/RepNAME.git
+
+Rstudio->git panel->shell
+git push origin master -u
+
+
+
+
+
+
 
