@@ -66,8 +66,11 @@ git config remote.origin.url git@github.com:your_username/your_project.git
 url = git@github.com:UNAME/RepNAME.git
 
 Rstudio->git panel->shell
-git push origin master -u
+git remote add origin git@github.com:Chen-Zhao/RLS_MEIS_regulation.git
+cat .git/config
+git pull git@github.com:Chen-Zhao/RLS_MEIS_regulation.git
 
+Rstudio->git panel->switch remote and branch
 
 
 
