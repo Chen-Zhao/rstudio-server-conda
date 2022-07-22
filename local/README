@@ -73,6 +73,10 @@ git pull git@github.com:Chen-Zhao/RLS_MEIS_regulation.git
 
 Rstudio->git panel->switch remote and branch
 
+git branch -M master
+git push -u origin master
+
+
 # configure user
 git config user.name "UNAME"
 
