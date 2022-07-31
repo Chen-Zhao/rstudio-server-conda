@@ -76,11 +76,24 @@ Rstudio->git panel->switch remote and branch
 git branch -M master
 git push -u origin master
 
-
 # configure user
 git config user.name "UNAME"
 
 
+##### nginx https
 
+#conda update -n base -c defaults conda
+conda env create -f nginx.yml
 
+nginx.yml
+name: nginx
+channels:
+  - conda-forge
+dependencies:
+  - mamba=0.24.0
+  - nginx=1.21.3=hceb49d0_1
+  - pip
+
+conda activate nginx
+  
 
