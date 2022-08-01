@@ -145,5 +145,5 @@ nginx -s quit
 ### chrome trust
 
 chrome://flags/#unsafely-treat-insecure-origin-as-secure
-
+chrome://flags/#enable-password-force-saving
 
