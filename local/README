@@ -102,10 +102,10 @@ mkdir -p $CONDA_PREFIX/etc/nginx/ssl
 
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout $CONDA_PREFIX/etc/nginx/ssl/nginx.key -out $CONDA_PREFIX/etc/nginx/ssl/nginx.crt
 cp nginx.key server.key 
-openssl req -new -out server.req -key server.key 
+openssl req -sha256 -new -out server.req -key server.key 
 openssl genrsa -out myCA.key 2048
-openssl req -new -x509 -key myCA.key -out myCA.cer -days 36500
-openssl x509 -req  -extensions v3_req -in server.req -out server.cer -CAkey myCA.key -CA myCA.cer -days 36500 -CAcreateserial -CAserial serial
+openssl req -sha256 -new -x509 -key myCA.key -out myCA.cer -days 365
+openssl x509 -sha256 -req  -extensions v3_req -in server.req -out server.cer -CAkey myCA.key -CA myCA.cer -days 365 -CAcreateserial -CAserial serial
 cp nginx.crt nginx.crt.bak
 cp server.cer nginx.crt
 mkdir -p $CONDA_PREFIX/etc/nginx/conf.d
