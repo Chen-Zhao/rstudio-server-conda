@@ -142,4 +142,8 @@ nginx -c $CONDA_PREFIX/etc/nginx/conf.d/rstudio.conf -g "pid "$CONDA_PREFIX"/var
 
 nginx -s quit
 
+### chrome trust
+
+chrome://flags/#unsafely-treat-insecure-origin-as-secure
+
 
