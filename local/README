@@ -96,8 +96,18 @@ dependencies:
 
 conda activate nginx
 
+#https://adfinis.com/en/blog/openssl-x509-certificates/
+
 mkdir -p $CONDA_PREFIX/etc/nginx/ssl
+
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout $CONDA_PREFIX/etc/nginx/ssl/nginx.key -out $CONDA_PREFIX/etc/nginx/ssl/nginx.crt
+cp nginx.key server.key 
+openssl req -new -out server.req -key server.key 
+openssl genrsa -out myCA.key 2048
+openssl req -new -x509 -key myCA.key -out myCA.cer -days 36500
+openssl x509 -req  -extensions v3_req -in server.req -out server.cer -CAkey myCA.key -CA myCA.cer -days 36500 -CAcreateserial -CAserial serial
+cp nginx.crt nginx.crt.bak
+cp server.cer nginx.crt
 mkdir -p $CONDA_PREFIX/etc/nginx/conf.d
 vi $CONDA_PREFIX/etc/nginx/conf.d/rstudio.conf
 events {
@@ -141,9 +151,3 @@ nginx -t -c $CONDA_PREFIX/etc/nginx/conf.d/rstudio.conf -g "pid "$CONDA_PREFIX"/
 nginx -c $CONDA_PREFIX/etc/nginx/conf.d/rstudio.conf -g "pid "$CONDA_PREFIX"/var/run/nginx.pid; worker_processes 2;"
 
 nginx -s quit
-
-### chrome trust
-
-chrome://flags/#unsafely-treat-insecure-origin-as-secure
-chrome://flags/#enable-password-force-saving
-
