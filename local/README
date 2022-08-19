@@ -159,3 +159,7 @@ nginx -t -c $CONDA_PREFIX/etc/nginx/conf.d/rstudio.conf -g "pid "$CONDA_PREFIX"/
 nginx -c $CONDA_PREFIX/etc/nginx/conf.d/rstudio.conf -g "pid "$CONDA_PREFIX"/var/run/nginx.pid; worker_processes 2;"
 
 nginx -s quit
+
+## watch error
+tourch .Rprofile # to project root
+
