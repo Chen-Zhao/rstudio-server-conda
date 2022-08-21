@@ -166,5 +166,4 @@ tourch .Rprofile # to project root
 #multiple session: use different browser
 export XDG_DATA_HOME=${PATH_TO_RUN_DIR}/.local/share
 export XDG_STATE_HOME=${PATH_TO_RUN_DIR}/.local/state
-export HOME=${PATH_TO_RUN_DIR}
 
