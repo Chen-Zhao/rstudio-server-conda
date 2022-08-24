@@ -52,7 +52,6 @@ export RETICULATE_PYTHON=$CONDA_PREFIX/bin/python
 
 export XDG_DATA_HOME=${PATH_TO_RUN_DIR}/.local/share
 export XDG_STATE_HOME=${PATH_TO_RUN_DIR}/.local/state
-export HOME=${PATH_TO_RUN_DIR}
 
 $RSERVER_BIN --server-daemonize=0 \
   --www-port=$1 \
