@@ -21,6 +21,10 @@ server-data-dir=${RSTUDIO_RUN_ROOT}/rstudio-server/
 rsession-path=${RSTUDIO_CONFIG_ROOT}/rsession.sh
 EOF
 
+if [ $localonly ] ; then
+echo www-address=127.0.0.1 ;
+fi >> ${RSTUDIO_CONFIG_ROOT}/rserver.conf
+
 cat << EOF > ${RSTUDIO_CONFIG_ROOT}/database.conf
 provider=sqlite
 directory=${RSTUDIO_RUN_ROOT}/database
